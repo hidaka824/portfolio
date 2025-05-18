@@ -1,0 +1,352 @@
+<h1>Home#top</h1>
+<p>Find me in app/views/home/top.html.erb</p>
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ポートフォリオ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ベーススタイル */
+    :root {
+      --primary-color: #3a86ff;
+      --secondary-color: #8338ec;
+      --text-color: #333;
+      --light-bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --border-radius: 12px;
+      --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--light-bg);
+      padding: 0;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* ヘッダーセクション */
+    .header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      border-radius: 0 0 var(--border-radius) var(--border-radius);
+      margin-bottom: 3rem;
+    }
+
+    .profile-img-container {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid white;
+      box-shadow: var(--box-shadow);
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .profile-img-container:hover {
+      transform: scale(1.05);
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .name {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* セクション共通スタイル */
+    .section {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: var(--transition);
+    }
+
+    .section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--primary-color);
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title i {
+      margin-right: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    /* 自己紹介セクション */
+    .bio {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    /* 趣味セクション */
+    .hobbies-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .hobby-tag {
+      background-color: rgba(58, 134, 255, 0.1);
+      color: var(--primary-color);
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .hobby-tag:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* スキルセクション */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-category {
+      background-color: var(--light-bg);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .skill-category:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--box-shadow);
+    }
+
+    .skill-category-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .skill-category-title i {
+      margin-right: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-item {
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .skill-item:hover {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    /* フッター */
+    .footer {
+      text-align: center;
+      padding: 2rem 0;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* レスポンシブデザイン */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .header {
+        padding: 2rem 1rem;
+      }
+
+      .profile-img-container {
+        width: 150px;
+        height: 150px;
+      }
+
+      .name {
+        font-size: 2rem;
+      }
+
+      .section {
+        padding: 1.5rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-img-container {
+        width: 120px;
+        height: 120px;
+      }
+
+      .name {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+
+      .bio {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="profile-img-container">
+      <%= image_tag 'sample顔写真.jpg', alt: 'プロフィール写真', class: 'profile-img' %>
+    </div>
+    <h1 class="name">日髙晃輔</h1>
+  </header>
+
+  <main class="container">
+    <!-- 自己紹介セクション -->
+    <section class="section">
+      <h2 class="section-title"><i class="fas fa-user"></i> 自己紹介</h2>
+      <p class="bio">
+        東京を拠点にフリーランスのウェブ開発者として活動しています。フロントエンド開発を専門とし、使いやすく美しいユーザーインターフェースの構築に情熱を注いでいます。チームでの協働を大切にし、ユーザー中心の設計を心がけています。新しい技術を学ぶことが好きで、常に自己成長を目指しています。クライアントのビジョンを理解し、それを実現するための最適なソリューションを提供することを心がけています。
+      </p>
+    </section>
+
+    <!-- 趣味セクション -->
+    <section class="section">
+      <h2 class="section-title"><i class="fas fa-heart"></i> 趣味・好きなこと</h2>
+      <div class="hobbies-container">
+        <span class="hobby-tag">旅行</span>
+        <span class="hobby-tag">写真撮影</span>
+        <span class="hobby-tag">読書</span>
+        <span class="hobby-tag">カフェ巡り</span>
+        <span class="hobby-tag">ハイキング</span>
+        <span class="hobby-tag">プログラミング</span>
+        <span class="hobby-tag">映画鑑賞</span>
+        <span class="hobby-tag">料理</span>
+      </div>
+    </section>
+
+    <!-- スキルセクション -->
+    <section class="section">
+      <h2 class="section-title"><i class="fas fa-code"></i> 技術スタック</h2>
+      <div class="skills-grid">
+        <!-- フロントエンド -->
+        <div class="skill-category">
+          <h3 class="skill-category-title"><i class="fas fa-laptop-code"></i> フロントエンド</h3>
+          <div class="skills-list">
+            <span class="skill-item">HTML5</span>
+            <span class="skill-item">CSS3</span>
+            <span class="skill-item">JavaScript</span>
+            <span class="skill-item">TypeScript</span>
+            <span class="skill-item">React</span>
+            <span class="skill-item">Next.js</span>
+            <span class="skill-item">Vue.js</span>
+            <span class="skill-item">Tailwind CSS</span>
+          </div>
+        </div>
+
+        <!-- バックエンド -->
+        <div class="skill-category">
+          <h3 class="skill-category-title"><i class="fas fa-server"></i> バックエンド</h3>
+          <div class="skills-list">
+            <span class="skill-item">Node.js</span>
+            <span class="skill-item">Express</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">Django</span>
+            <span class="skill-item">PHP</span>
+            <span class="skill-item">Laravel</span>
+            <span class="skill-item">GraphQL</span>
+            <span class="skill-item">REST API</span>
+          </div>
+        </div>
+
+        <!-- データベース -->
+        <div class="skill-category">
+          <h3 class="skill-category-title"><i class="fas fa-database"></i> データベース</h3>
+          <div class="skills-list">
+            <span class="skill-item">MySQL</span>
+            <span class="skill-item">PostgreSQL</span>
+            <span class="skill-item">MongoDB</span>
+            <span class="skill-item">Firebase</span>
+            <span class="skill-item">Redis</span>
+          </div>
+        </div>
+
+        <!-- ツール・その他 -->
+        <div class="skill-category">
+          <h3 class="skill-category-title"><i class="fas fa-tools"></i> ツール・その他</h3>
+          <div class="skills-list">
+            <span class="skill-item">Git</span>
+            <span class="skill-item">GitHub</span>
+            <span class="skill-item">Docker</span>
+            <span class="skill-item">AWS</span>
+            <span class="skill-item">Vercel</span>
+            <span class="skill-item">Figma</span>
+            <span class="skill-item">Adobe XD</span>
+            <span class="skill-item">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 山田 太郎. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
